@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erika Escalante | Portafolio Creativo</title>
+
+  <style>
+    :root {
+      --black: #0e1113;
+      --dark: #15191c;
+      --gray: #73777c;
+      --white: #ffffff;
+      --soft-white: #f7f4f4;
+      --pink: #B94EC2;
+      --pink-soft: #DCA7E1;
+      --pink-light: #F5E7F7;
+      --coral: #B94EC2;
+      --glass: rgba(255,255,255,0.10);
+      --shadow: 0 24px 60px rgba(0,0,0,.24);
+      --radius: 28px;
+      --transition: all .65s cubic-bezier(.16, 1, .3, 1);
+      --hero-bg-image: url("Imagenes/Estudio de grabación.jpg");
+      --about-bg-image: url("Imagenes/Estudio de grabación2.jpg");
+      --services-bg-image: url("Imagenes/Estudio de grabación3.jpg");
+      --experience-bg-image: url("Imagenes/Estudio de grabación2.jpg");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Montserrat", "Poppins", Arial, sans-serif;
+      color: var(--black);
+      background: var(--soft-white);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, video {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .section {
+      position: relative;
+      padding: 95px 8%;
+      overflow: hidden;
+    }
+
+    .section-tag {
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-size: .78rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 4.2rem);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .section-title span,
+    .accent {
+      color: var(--pink);
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      padding: 16px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), var(--coral));
+      color: white;
+      font-weight: 800;
+      letter-spacing: .5px;
+      box-shadow: 0 16px 35px rgba(185, 78, 194, .32);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 24px 45px rgba(185, 78, 194, .45);
+    }
+
+    .btn-dark {
+      background: linear-gradient(135deg, #15191c, #2a3035);
+      color: white;
+      box-shadow: 0 16px 35px rgba(0,0,0,.2);
+    }
+
+    /* HEADER */
+
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 24px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .header.scrolled {
+      padding: 16px 7%;
+      background: rgba(10, 12, 14, .74);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.25);
+    }
+
+    .logo {
+      line-height: .9;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 2.6rem;
+      font-weight: 400;
+    }
+
+    .logo small {
+      display: block;
+      margin-top: 8px;
+      font-family: Montserrat, Arial, sans-serif;
+      font-size: .65rem;
+      font-style: normal;
+      letter-spacing: 8px;
+      color: var(--pink-soft);
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      position: relative;
+      opacity: .92;
+      transition: var(--transition);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 0;
+      height: 2px;
+      background: var(--pink);
+      transition: var(--transition);
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--pink-soft);
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: white;
+      font-size: 2rem;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 120px 7% 60px;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,10,12,.96) 0%, rgba(8,10,12,.70) 42%, rgba(8,10,12,.22) 100%),
+        var(--hero-bg-image) center / cover no-repeat;
+      transform: scale(1.04);
+      filter: saturate(.8) contrast(1.05);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      align-items: end;
+      gap: 50px;
+    }
+
+    .hero-copy {
+      padding-bottom: 80px;
+      transition: var(--transition);
+    }
+
+    .hero-kicker {
+      color: var(--pink);
+      font-weight: 900;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-size: clamp(3.2rem, 8vw, 7.2rem);
+      line-height: .88;
+      text-transform: uppercase;
+      letter-spacing: -5px;
+      font-weight: 950;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 28px;
+    }
+
+    .play-dot {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      background: white;
+      color: var(--pink);
+      font-size: 1.1rem;
+    }
+
+    .hero-person {
+      position: relative;
+      min-height: 78vh;
+      align-self: end;
+    }
+
+    .hero-person img {
+      position: absolute;
+      bottom: -65px;
+      right: 0;
+      height: min(780px, 86vh);
+      object-fit: contain;
+      object-position: bottom right;
+      filter: drop-shadow(0 30px 55px rgba(0,0,0,.5));
+    }
+
+    .social-rail {
+      position: absolute;
+      right: 7%;
+      top: 38%;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      color: white;
+      font-weight: 800;
+      opacity: .9;
+    }
+
+
+    .social-rail a {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .social-rail a:hover {
+      color: var(--pink);
+      background: rgba(185,78,194,.14);
+      transform: translateY(-3px) scale(1.08);
+    }
+
+    .social-rail svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.88);
+      transition: var(--transition);
+      width: fit-content;
+    }
+
+    .contact-link:hover {
+      color: var(--pink);
+      transform: translateX(5px);
+    }
+
+    .contact-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      flex: 0 0 auto;
+    }
+
+    .social-rail::after {
+      content: "";
+      width: 1px;
+      height: 160px;
+      background: rgba(255,255,255,.55);
+      margin-top: 8px;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 44px;
+      left: 7%;
+      z-index: 4;
+      width: 32px;
+      height: 54px;
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: 999px;
+    }
+
+    .scroll-indicator::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 4px;
+      height: 8px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: white;
+      animation: scrollDot 1.8s infinite;
+    }
+
+    @keyframes scrollDot {
+      0% { opacity: 0; transform: translate(-50%, 0); }
+      35% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, 20px); }
+    }
+
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cv {
+      background: rgba(255,255,255,.10);
+      color: white;
+      border: 1px solid rgba(255,255,255,.36);
+      box-shadow: none;
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-cv:hover {
+      background: rgba(255,255,255,.18);
+      border-color: var(--pink-soft);
+      box-shadow: 0 18px 40px rgba(0,0,0,.20);
+    }
+
+    /* VIDEO OVERLAY */
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      background: rgba(8,10,12,.94);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .video-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .video-overlay video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .close-video {
+      position: fixed;
+      top: 30px;
+      right: 36px;
+      z-index: 5100;
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(255,255,255,.4);
+      background: rgba(255,255,255,.1);
+      color: white;
+      border-radius: 50%;
+      font-size: 2rem;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+
+    .close-video:hover {
+      background: var(--pink);
+      transform: rotate(90deg);
+    }
+
+    .hero.is-playing .hero-copy,
+    .hero.is-playing .hero-person,
+    .hero.is-playing .social-rail,
+    .hero.is-playing .scroll-indicator {
+      opacity: 0;
+      filter: blur(10px);
+      transform: scale(.98);
+    }
+
+    /* SOBRE MI */
+
+    .about {
+      background:
+        linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.9)),
+        var(--about-bg-image) center / cover no-repeat;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.15fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about p {
+      color: #3d4146;
+      line-height: 1.8;
+      margin: 24px 0 32px;
+      max-width: 620px;
+    }
+
+    .skill-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .skill-card {
+      min-height: 250px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 20px 50px rgba(0,0,0,.08);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-14px);
+      box-shadow: 0 32px 70px rgba(185,78,194,.18);
+    }
+
+    .skill-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.9);
+      transition: var(--transition);
+    }
+
+    .skill-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .skill-card h3 {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: .88rem;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+    }
+
+    .icon-bubble {
+      position: absolute;
+      left: 50%;
+      bottom: 48px;
+      transform: translateX(-50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      display: grid;
+      place-items: center;
+      color: var(--pink);
+      font-size: 1.7rem;
+      box-shadow: 0 15px 30px rgba(0,0,0,.1);
+      border: 1px solid rgba(185,78,194,.25);
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio {
+      background: radial-gradient(circle at top right, rgba(185,78,194,.18), transparent 34%), var(--black);
+      color: white;
+      padding-left: 6%;
+      padding-right: 6%;
+    }
+
+    .portfolio-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+
+    .portfolio-carousel {
+      display: grid;
+      grid-template-columns: 44px 1fr 44px;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .portfolio-track {
+      display: flex;
+      gap: 28px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 4px 24px;
+      scrollbar-width: none;
+    }
+
+    .portfolio-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .portfolio-card {
+      flex: 0 0 230px;
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+      background: #222;
+      min-height: 290px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.28);
+      transition: var(--transition);
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-12px) scale(1.02);
+    }
+
+    .portfolio-card video,
+    .portfolio-card img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .portfolio-card:hover video,
+    .portfolio-card:hover img {
+      transform: scale(1.08);
+      filter: brightness(.65);
+    }
+
+    .card-play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(to top, rgba(0,0,0,.75), transparent 55%);
+      opacity: .95;
+    }
+
+    .card-play span {
+      width: 54px;
+      height: 54px;
+      background: white;
+      color: var(--pink);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .portfolio-label {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 14px;
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: white;
+    }
+
+    .arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.08);
+      color: white;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .arrow:hover {
+      background: var(--pink);
+      transform: scale(1.1);
+    }
+
+    /* SERVICIOS */
+
+    .services {
+      background:
+        linear-gradient(rgba(255,255,255,.86), rgba(255,255,255,.9)),
+        var(--services-bg-image) center / cover no-repeat;
+    }
+
+    .services-row {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(185,78,194,.16);
+      border-radius: 24px;
+      padding: 38px 22px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 60px rgba(185,78,194,.18);
+      background: white;
+    }
+
+    .service-icon {
+      color: var(--pink);
+      font-size: 2.4rem;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      text-transform: uppercase;
+      font-size: .86rem;
+      margin-bottom: 14px;
+    }
+
+    .service-card p {
+      color: #4d5359;
+      font-size: .85rem;
+      line-height: 1.7;
+    }
+
+    /* EXPERIENCIA */
+
+    .experience {
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(14,17,19,.88), rgba(14,17,19,.62)),
+        var(--experience-bg-image) center / cover no-repeat;
+      padding-top: 78px;
+      padding-bottom: 78px;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .logos {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      align-items: center;
+    }
+
+    .logo-card {
+      min-height: 118px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(14px);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      transition: var(--transition);
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 1;
+    }
+
+    .logo-card:hover {
+      transform: translateY(-10px);
+      background: #ffffff;
+      box-shadow: 0 24px 55px rgba(0,0,0,.22);
+    }
+
+    .logo-card img {
+      width: 100%;
+      max-width: 145px;
+      max-height: 70px;
+      object-fit: contain;
+      filter: none;
+      opacity: 1;
+      background: transparent;
+    }
+
+    /* CONTACTO */
+
+    .contact {
+      background: var(--black);
+      color: white;
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+
+    .contact-box {
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1fr;
+      gap: 34px;
+      padding: 42px;
+      align-items: center;
+      backdrop-filter: blur(14px);
+    }
+
+    .contact-items {
+      display: grid;
+      gap: 16px;
+      color: rgba(255,255,255,.85);
+    }
+
+    .contact-items p {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    footer {
+      background: linear-gradient(90deg, #82388A, #B94EC2);
+      color: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      font-size: .78rem;
+    }
+
+    /* ANIMACIONES */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      filter: blur(8px);
+      transition: opacity .9s cubic-bezier(.16,1,.3,1),
+                  transform .9s cubic-bezier(.16,1,.3,1),
+                  filter .9s cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--delay, 0s);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .reveal-left {
+      transform: translateX(-60px);
+    }
+
+    .reveal-right {
+      transform: translateX(60px);
+    }
+
+    .reveal-zoom {
+      transform: scale(.92);
+    }
+
+    .reveal-left.show,
+    .reveal-right.show,
+    .reveal-zoom.show {
+      transform: translateX(0) scale(1);
+    }
+
+
+    .portfolio-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(7,9,11,.92);
+      backdrop-filter: blur(18px);
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      padding: 40px;
+    }
+
+    .portfolio-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .portfolio-modal img {
+      max-width: min(1100px, 92vw);
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 24px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.45);
+      transform: scale(.94);
+      transition: var(--transition);
+    }
+
+    .portfolio-modal.active img {
+      transform: scale(1);
+    }
+
+    .portfolio-modal-close {
+      position: fixed;
+      top: 28px;
+      right: 34px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.09);
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 2001;
+    }
+
+
+    .logo-fallback {
+      color: #1a1d20;
+      font-weight: 900;
+      font-size: .9rem;
+      letter-spacing: .8px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+
+    .gallery-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 6000;
+      background: rgba(7,9,11,.94);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      padding: 32px;
+    }
+
+    .gallery-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .gallery-panel {
+      width: min(1500px, 96vw);
+      height: min(90vh, 1000px);
+      margin: 0 auto;
+      background: #121619;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 30px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: translateY(28px) scale(.985);
+      transition: var(--transition);
+    }
+
+    .gallery-overlay.active .gallery-panel {
+      transform: translateY(0) scale(1);
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 28px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      color: white;
+      background: rgba(255,255,255,.03);
+      flex: 0 0 auto;
+    }
+
+    .gallery-header h3 {
+      font-size: clamp(1.3rem, 2.6vw, 2.2rem);
+      margin: 0;
+    }
+
+    .gallery-close {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+      flex: 0 0 auto;
+    }
+
+    .gallery-close:hover {
+      background: var(--pink);
+      transform: rotate(90deg);
+    }
+
+    .gallery-scroll {
+      overflow-y: auto;
+      padding: 26px;
+      flex: 1 1 auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--pink) rgba(255,255,255,.08);
+    }
+
+    .gallery-scroll::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .gallery-scroll::-webkit-scrollbar-track {
+      background: rgba(255,255,255,.06);
+      border-radius: 999px;
+    }
+
+    .gallery-scroll::-webkit-scrollbar-thumb {
+      background: var(--pink);
+      border-radius: 999px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 18px;
+    }
+
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      background: #1d2226;
+      min-height: 220px;
+      cursor: zoom-in;
+      position: relative;
+      box-shadow: 0 14px 30px rgba(0,0,0,.18);
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 24px 45px rgba(0,0,0,.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(.88);
+    }
+
+    .gallery-item::after {
+      content: "Ampliar";
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      color: white;
+      background: rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .4px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 7000;
+      background: rgba(0,0,0,.95);
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .gallery-lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .gallery-lightbox img {
+      max-width: min(1300px, 92vw);
+      max-height: 84vh;
+      object-fit: contain;
+      border-radius: 22px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      transform: scale(.95);
+      transition: var(--transition);
+    }
+
+    .gallery-lightbox.active img {
+      transform: scale(1);
+    }
+
+    .gallery-lightbox-close {
+      position: fixed;
+      top: 28px;
+      right: 34px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.10);
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 7100;
+      transition: var(--transition);
+    }
+
+    .gallery-lightbox-close:hover {
+      background: var(--pink);
+      transform: rotate(90deg);
+    }
+
+    @media (max-width: 720px) {
+      .gallery-overlay {
+        padding: 12px;
+      }
+
+      .gallery-panel {
+        width: 100%;
+        height: 94vh;
+        border-radius: 20px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .gallery-item img {
+        height: 190px;
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1050px) {
+      .nav {
+        position: fixed;
+        right: 22px;
+        top: 86px;
+        flex-direction: column;
+        align-items: flex-start;
+        background: rgba(10,12,14,.92);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(255,255,255,.12);
+        padding: 28px;
+        border-radius: 22px;
+        transform: translateX(120%);
+        transition: var(--transition);
+      }
+
+      .nav.open {
+        transform: translateX(0);
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .header .btn {
+        display: none;
+      }
+
+      .hero-inner,
+      .about-grid,
+      .experience-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-person {
+        min-height: 520px;
+      }
+
+      .hero-person img {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+      }
+
+      .services-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .logos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        padding: 76px 6%;
+      }
+
+      .hero {
+        padding: 115px 6% 40px;
+      }
+
+      .hero-inner {
+        gap: 20px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-person {
+        min-height: 360px;
+      }
+
+      .hero-person img {
+        height: 430px;
+        bottom: -44px;
+      }
+
+      .social-rail {
+        display: none;
+      }
+
+      .skill-cards,
+      .services-row {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .portfolio-carousel {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        display: none;
+      }
+
+      .contact-box {
+        padding: 28px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header" id="header">
+    <a href="#inicio" class="logo">
+      Erika
+      <small>Escalante</small>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a class="btn" href="#contacto">Hablemos ✈</a>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </header>
+
+  <main>
+
+    <!-- INICIO -->
+    <section class="hero" id="inicio">
+      <div class="hero-bg"></div>
+
+      <div class="hero-inner">
+        <div class="hero-copy reveal show">
+          <div class="hero-kicker">Comunicación que</div>
+          <h1>Conecta,<br>Crea y<br><span>Transforma.</span></h1>
+          <p>
+            Comunicóloga | Fotógrafa | Creadora de Contenido<br>
+            <strong>Especialista en Marketing Digital.</strong>
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn" id="playPresentation">
+              Ver mi trabajo <span class="play-dot">▶</span>
+            </button>
+            <a class="btn btn-cv" data-file="CV Escalante .pdf" href="#" download="CV_Erika_Escalante.pdf" target="_blank" rel="noopener">
+              Descargar CV ↓
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-person reveal reveal-right show">
+          <img data-file="Imagenes/Erika_foto.PNG" src="" alt="Erika Escalante">
+        </div>
+      </div>
+
+      <div class="social-rail">
+        <a href="https://www.instagram.com/merryluqui/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Erika" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM17 5.5A1.5 1.5 0 1 1 17 8a1.5 1.5 0 0 1 0-3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></a>
+        <a href="#" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.4-.4-5c-.2-1-1-1.8-2-2C18.8 4.5 12 4.5 12 4.5S5.2 4.5 3.4 5c-1 .2-1.8 1-2 2C1 8.6 1 12 1 12s0 3.4.4 5c.2 1 1 1.8 2 2 1.8.5 8.6.5 8.6.5s6.8 0 8.6-.5c1-.2 1.8-1 2-2 .4-1.6.4-5 .4-5Zm-13.2 3.4V8.6l5.9 3.4-5.9 3.4Z"/></svg></a>
+        <a href="https://www.tiktok.com/@merryluqui" target="_blank" rel="noopener noreferrer" aria-label="TikTok de Erika" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 2h3.2c.2 1.7 1.2 3.2 2.8 4.1v3.2a8.4 8.4 0 0 1-3.1-.8v7.1A6.4 6.4 0 1 1 11 9.2c.4 0 .8 0 1.2.1v3.3a3.1 3.1 0 1 0 2.3 3V2Z"/></svg></a>
+        <a href="mailto:maryel.me86@gmail.com" aria-label="Correo electrónico" title="Correo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5Zm2 2v.4l8 5.2 8-5.2V7H4Zm16 10V9.8l-8 5.2-8-5.2V17h16Z"/></svg></a>
+      </div>
+
+      <div class="scroll-indicator"></div>
+
+      <div class="video-overlay" id="videoOverlay">
+        <button class="close-video" id="closeVideo">×</button>
+        <video id="presentationVideo" controls playsinline>
+          <source data-file="Imagenes/video_presentacion.mp4" src="" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+        </video>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section class="section about" id="sobre-mi">
+      <div class="about-grid">
+        <div class="reveal reveal-left">
+          <div class="section-tag">Sobre mí</div>
+          <h2 class="section-title">Ideas que comunican,<br>estrategias que <span>funcionan.</span></h2>
+          <p>
+            Soy comunicóloga apasionada por contar historias que conecten con las personas y generen impacto.
+            Combino creatividad, estrategia y tecnología para desarrollar contenido visual y digital que impulsa marcas,
+            proyectos y experiencias.
+          </p>
+          <a href="#contacto" class="btn btn-dark">Conoce más sobre mí ♙</a>
+        </div>
+
+        <div class="skill-cards">
+          <article class="skill-card reveal reveal-zoom" style="--delay:.1s">
+            <img data-file="Imagenes/foto.jpg" src="" alt="Fotografía profesional">
+            <div class="icon-bubble">📷</div>
+            <h3>Fotografía</h3>
+          </article>
+
+          <article class="skill-card reveal reveal-zoom" style="--delay:.22s">
+            <img data-file="Imagenes/video.jpg" src="" alt="Producción de video">
+            <div class="icon-bubble">🎬</div>
+            <h3>Video</h3>
+          </article>
+
+          <article class="skill-card reveal reveal-zoom" style="--delay:.34s">
+            <img data-file="Imagenes/marketing.jpg" src="" alt="Marketing digital">
+            <div class="icon-bubble">🎯</div>
+            <h3>Marketing</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section class="section portfolio" id="portafolio">
+      <div class="portfolio-head">
+        <div class="reveal">
+          <div class="section-tag">Portafolio</div>
+          <h2 class="section-title">Proyectos que cuentan historias.</h2>
+        </div>
+        <button class="btn reveal" id="openGallery" type="button">Ver todos →</button>
+      </div>
+
+      <div class="portfolio-carousel reveal">
+        <button class="arrow" id="prevPortfolio">‹</button>
+
+        <div class="portfolio-track" id="portfolioTrack">
+          <article class="portfolio-card">
+            <img data-file="Imagenes/1.jpg" src="" alt="Trabajo de portafolio 1" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/2.png" src="" alt="Trabajo de portafolio 2" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido visual</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/3.png" src="" alt="Trabajo de portafolio 3" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Diseño</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/4.png" src="" alt="Trabajo de portafolio 4" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía de producto</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/5.jpg" src="" alt="Trabajo de portafolio 5" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Eventos</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/6.jpg" src="" alt="Trabajo de portafolio 6" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Retrato</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/7.jpg" src="" alt="Trabajo de portafolio 7" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Marketing</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/8.jpg" src="" alt="Trabajo de portafolio 8" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido para redes</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/9.jpg" src="" alt="Trabajo de portafolio 9" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/10.jpg" src="" alt="Trabajo de portafolio 10" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido visual</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/11.jpg" src="" alt="Trabajo de portafolio 11" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Diseño</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/12.jpg" src="" alt="Trabajo de portafolio 12" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía de producto</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/13.jpg" src="" alt="Trabajo de portafolio 13" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Eventos</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/14.jpg" src="" alt="Trabajo de portafolio 14" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Retrato</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/15.jpg" src="" alt="Trabajo de portafolio 15" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Marketing</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/16.jpg" src="" alt="Trabajo de portafolio 16" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido para redes</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/17.jpg" src="" alt="Trabajo de portafolio 17" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/18.jpg" src="" alt="Trabajo de portafolio 18" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido visual</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/19.jpg" src="" alt="Trabajo de portafolio 19" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Diseño</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/20.jpg" src="" alt="Trabajo de portafolio 20" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía de producto</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/21.jpg" src="" alt="Trabajo de portafolio 21" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Eventos</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/22.jpg" src="" alt="Trabajo de portafolio 22" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Retrato</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/23.jpg" src="" alt="Trabajo de portafolio 23" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Marketing</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/24.jpg" src="" alt="Trabajo de portafolio 24" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido para redes</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/25.jpg" src="" alt="Trabajo de portafolio 25" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/26.jpg" src="" alt="Trabajo de portafolio 26" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido visual</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/27.jpg" src="" alt="Trabajo de portafolio 27" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Diseño</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/28.jpg" src="" alt="Trabajo de portafolio 28" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía de producto</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/29.jpg" src="" alt="Trabajo de portafolio 29" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Eventos</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/30.jpg" src="" alt="Trabajo de portafolio 30" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Retrato</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/31.jpg" src="" alt="Trabajo de portafolio 31" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Marketing</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/32.jpg" src="" alt="Trabajo de portafolio 32" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido para redes</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/33.jpg" src="" alt="Trabajo de portafolio 33" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/34.jpg" src="" alt="Trabajo de portafolio 34" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido visual</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/35.jpg" src="" alt="Trabajo de portafolio 35" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Diseño</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/36.jpg" src="" alt="Trabajo de portafolio 36" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía de producto</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/37.jpg" src="" alt="Trabajo de portafolio 37" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Eventos</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/38.jpg" src="" alt="Trabajo de portafolio 38" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Retrato</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/39.jpg" src="" alt="Trabajo de portafolio 39" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Marketing</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/40.jpg" src="" alt="Trabajo de portafolio 40" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido para redes</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/41.jpg" src="" alt="Trabajo de portafolio 41" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Fotografía</div>
+          </article>
+          <article class="portfolio-card">
+            <img data-file="Imagenes/42.jpg" src="" alt="Trabajo de portafolio 42" loading="lazy">
+            <div class="card-play"><span>＋</span></div>
+            <div class="portfolio-label">Contenido visual</div>
+          </article>
+        </div>
+
+        <button class="arrow" id="nextPortfolio">›</button>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section services" id="servicios">
+      <div class="reveal">
+        <div class="section-tag">Servicios</div>
+        <h2 class="section-title">¿En qué puedo ayudarte?</h2>
+      </div>
+
+      <div class="services-row">
+        <article class="service-card reveal" style="--delay:.08s">
+          <div class="service-icon">📷</div>
+          <h3>Fotografía</h3>
+          <p>Sesiones, producto, eventos y proyectos visuales especiales.</p>
+        </article>
+
+        <article class="service-card reveal" style="--delay:.16s">
+          <div class="service-icon">🎬</div>
+          <h3>Video</h3>
+          <p>Producción audiovisual, edición, reels, shorts y videos promocionales.</p>
+        </article>
+
+        <article class="service-card reveal" style="--delay:.24s">
+          <div class="service-icon">📣</div>
+          <h3>Marketing digital</h3>
+          <p>Estrategias de contenido, manejo de redes sociales y campañas.</p>
+        </article>
+
+        <article class="service-card reveal" style="--delay:.32s">
+          <div class="service-icon">🎙</div>
+          <h3>Locución</h3>
+          <p>Voice talent, locución comercial, institucional y doblaje.</p>
+        </article>
+
+        <article class="service-card reveal" style="--delay:.40s">
+          <div class="service-icon">✎</div>
+          <h3>Diseño & contenido</h3>
+          <p>Diseño gráfico, flyers, copies, guiones y conceptos creativos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section class="section experience" id="experiencia">
+      <div class="experience-grid">
+        <div class="reveal reveal-left">
+          <div class="section-tag">Experiencia</div>
+          <h2 class="section-title">Marcas, proyectos y espacios donde he creado.</h2>
+        </div>
+
+        <div class="logos">
+          <div class="logo-card reveal" style="--delay:.08s">
+            <img data-file="Imagenes/logo_reforma.png" src="" alt="Reforma">
+          </div>
+          <div class="logo-card reveal" style="--delay:.16s">
+            <img data-file="Imagenes/logo_mide.png" src="" alt="MIDE">
+          </div>
+          <div class="logo-card reveal" style="--delay:.24s">
+            <img data-file="Imagenes/logo_iplus.png" src="" alt="IPlus Refacciones">
+          </div>
+          <div class="logo-card reveal" style="--delay:.32s">
+            <img data-file="Imagenes/logo_ifcreatif.png" src="" alt="if Creatif">
+          </div>
+          <div class="logo-card reveal" style="--delay:.40s">
+            <img data-file="Imagenes/logo_lobos.png" src="" alt="Lobos">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section contact" id="contacto">
+      <div class="contact-box reveal">
+        <div>
+          <div class="section-tag">Contacto</div>
+          <h2 class="section-title">¿Tienes un proyecto en mente?</h2>
+          <p>Hablemos y hagámoslo realidad.</p>
+        </div>
+
+        <div class="contact-items">
+          <a class="contact-link" href="https://www.tiktok.com/@merryluqui" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 2h3.2c.2 1.7 1.2 3.2 2.8 4.1v3.2a8.4 8.4 0 0 1-3.1-.8v7.1A6.4 6.4 0 1 1 11 9.2c.4 0 .8 0 1.2.1v3.3a3.1 3.1 0 1 0 2.3 3V2Z"/></svg><span>@merryluqui</span>
+          </a>
+          <a class="contact-link" href="mailto:maryel.me86@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5Zm2 2v.4l8 5.2 8-5.2V7H4Zm16 10V9.8l-8 5.2-8-5.2V17h16Z"/></svg><span>maryel.me86@gmail.com</span>
+          </a>
+          <a class="contact-link" href="https://www.instagram.com/merryluqui/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM17 5.5A1.5 1.5 0 1 1 17 8a1.5 1.5 0 0 1 0-3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg><span>@merryluqui</span>
+          </a>
+        </div>
+
+        <a class="btn" href="mailto:maryel.me86@gmail.com">Escríbeme ✈</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="portfolio-modal" id="portfolioModal" aria-hidden="true">
+    <button class="portfolio-modal-close" id="portfolioModalClose" aria-label="Cerrar">×</button>
+    <img id="portfolioModalImage" src="" alt="Vista ampliada del portafolio">
+  </div>
+
+  <footer>
+    <p>© 2025 Erika Escalante Trosino. Todos los derechos reservados.</p>
+    <p>Diseñado con ♡</p>
+  </footer>
+
+  <div class="gallery-overlay" id="galleryOverlay" aria-hidden="true">
+    <div class="gallery-panel">
+      <div class="gallery-header">
+        <div>
+          <div class="section-tag">Portafolio completo</div>
+          <h3>Todos los proyectos</h3>
+        </div>
+        <button class="gallery-close" id="closeGallery" aria-label="Cerrar galería">×</button>
+      </div>
+
+      <div class="gallery-scroll">
+        <div class="gallery-grid">
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/1.jpg">
+          <img data-file="Imagenes/1.jpg" src="" alt="Trabajo de portafolio 1" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/2.png">
+          <img data-file="Imagenes/2.png" src="" alt="Trabajo de portafolio 2" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/3.png">
+          <img data-file="Imagenes/3.png" src="" alt="Trabajo de portafolio 3" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/4.png">
+          <img data-file="Imagenes/4.png" src="" alt="Trabajo de portafolio 4" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/5.jpg">
+          <img data-file="Imagenes/5.jpg" src="" alt="Trabajo de portafolio 5" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/6.jpg">
+          <img data-file="Imagenes/6.jpg" src="" alt="Trabajo de portafolio 6" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/7.jpg">
+          <img data-file="Imagenes/7.jpg" src="" alt="Trabajo de portafolio 7" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/8.jpg">
+          <img data-file="Imagenes/8.jpg" src="" alt="Trabajo de portafolio 8" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/9.jpg">
+          <img data-file="Imagenes/9.jpg" src="" alt="Trabajo de portafolio 9" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/10.jpg">
+          <img data-file="Imagenes/10.jpg" src="" alt="Trabajo de portafolio 10" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/11.jpg">
+          <img data-file="Imagenes/11.jpg" src="" alt="Trabajo de portafolio 11" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/12.jpg">
+          <img data-file="Imagenes/12.jpg" src="" alt="Trabajo de portafolio 12" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/13.jpg">
+          <img data-file="Imagenes/13.jpg" src="" alt="Trabajo de portafolio 13" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/14.jpg">
+          <img data-file="Imagenes/14.jpg" src="" alt="Trabajo de portafolio 14" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/15.jpg">
+          <img data-file="Imagenes/15.jpg" src="" alt="Trabajo de portafolio 15" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/16.jpg">
+          <img data-file="Imagenes/16.jpg" src="" alt="Trabajo de portafolio 16" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/17.jpg">
+          <img data-file="Imagenes/17.jpg" src="" alt="Trabajo de portafolio 17" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/18.jpg">
+          <img data-file="Imagenes/18.jpg" src="" alt="Trabajo de portafolio 18" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/19.jpg">
+          <img data-file="Imagenes/19.jpg" src="" alt="Trabajo de portafolio 19" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/20.jpg">
+          <img data-file="Imagenes/20.jpg" src="" alt="Trabajo de portafolio 20" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/21.jpg">
+          <img data-file="Imagenes/21.jpg" src="" alt="Trabajo de portafolio 21" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/22.jpg">
+          <img data-file="Imagenes/22.jpg" src="" alt="Trabajo de portafolio 22" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/23.jpg">
+          <img data-file="Imagenes/23.jpg" src="" alt="Trabajo de portafolio 23" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/24.jpg">
+          <img data-file="Imagenes/24.jpg" src="" alt="Trabajo de portafolio 24" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/25.jpg">
+          <img data-file="Imagenes/25.jpg" src="" alt="Trabajo de portafolio 25" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/26.jpg">
+          <img data-file="Imagenes/26.jpg" src="" alt="Trabajo de portafolio 26" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/27.jpg">
+          <img data-file="Imagenes/27.jpg" src="" alt="Trabajo de portafolio 27" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/28.jpg">
+          <img data-file="Imagenes/28.jpg" src="" alt="Trabajo de portafolio 28" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/29.jpg">
+          <img data-file="Imagenes/29.jpg" src="" alt="Trabajo de portafolio 29" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/30.jpg">
+          <img data-file="Imagenes/30.jpg" src="" alt="Trabajo de portafolio 30" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/31.jpg">
+          <img data-file="Imagenes/31.jpg" src="" alt="Trabajo de portafolio 31" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/32.jpg">
+          <img data-file="Imagenes/32.jpg" src="" alt="Trabajo de portafolio 32" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/33.jpg">
+          <img data-file="Imagenes/33.jpg" src="" alt="Trabajo de portafolio 33" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/34.jpg">
+          <img data-file="Imagenes/34.jpg" src="" alt="Trabajo de portafolio 34" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/35.jpg">
+          <img data-file="Imagenes/35.jpg" src="" alt="Trabajo de portafolio 35" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/36.jpg">
+          <img data-file="Imagenes/36.jpg" src="" alt="Trabajo de portafolio 36" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/37.jpg">
+          <img data-file="Imagenes/37.jpg" src="" alt="Trabajo de portafolio 37" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/38.jpg">
+          <img data-file="Imagenes/38.jpg" src="" alt="Trabajo de portafolio 38" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/39.jpg">
+          <img data-file="Imagenes/39.jpg" src="" alt="Trabajo de portafolio 39" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/40.jpg">
+          <img data-file="Imagenes/40.jpg" src="" alt="Trabajo de portafolio 40" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/41.jpg">
+          <img data-file="Imagenes/41.jpg" src="" alt="Trabajo de portafolio 41" loading="lazy">
+        </button>
+        <button class="gallery-item" type="button" data-gallery-src="Imagenes/42.jpg">
+          <img data-file="Imagenes/42.jpg" src="" alt="Trabajo de portafolio 42" loading="lazy">
+        </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+    <button class="gallery-lightbox-close" id="closeLightbox" aria-label="Cerrar imagen ampliada">×</button>
+    <img id="galleryLightboxImage" src="" alt="Imagen ampliada del portafolio">
+  </div>
+
+  <script>
+
+    /*
+      CARGA DE ARCHIVOS
+      - Local: usa D:\Pagina Merry\ como raíz aunque el HTML se abra desde otra carpeta.
+      - GitHub Pages / servidor: usa rutas relativas del repositorio.
+    */
+    const LOCAL_PROJECT_ROOT = "file:///D:/Pagina%20Merry/";
+
+    function encodeAssetPath(relativePath) {
+      return relativePath
+        .split("/")
+        .map(part => encodeURIComponent(part))
+        .join("/");
+    }
+
+    function assetUrl(relativePath) {
+      if (window.location.protocol === "file:") {
+        return LOCAL_PROJECT_ROOT + encodeAssetPath(relativePath);
+      }
+      return encodeAssetPath(relativePath);
+    }
+
+    function loadProjectAssets() {
+      document.querySelectorAll("[data-file]").forEach(el => {
+        const relativePath = el.dataset.file;
+        const url = assetUrl(relativePath);
+
+        if (el.tagName === "A") {
+          el.href = url;
+        } else if (el.tagName === "SOURCE") {
+          el.src = url;
+        } else {
+          el.src = url;
+        }
+      });
+
+      document.documentElement.style.setProperty(
+        "--hero-bg-image",
+        `url("${assetUrl("Imagenes/Estudio de grabación.jpg")}")`
+      );
+      document.documentElement.style.setProperty(
+        "--about-bg-image",
+        `url("${assetUrl("Imagenes/Estudio de grabación2.jpg")}")`
+      );
+      document.documentElement.style.setProperty(
+        "--services-bg-image",
+        `url("${assetUrl("Imagenes/Estudio de grabación3.jpg")}")`
+      );
+      document.documentElement.style.setProperty(
+        "--experience-bg-image",
+        `url("${assetUrl("Imagenes/Estudio de grabación2.jpg")}")`
+      );
+
+      const mainVideo = document.getElementById("presentationVideo");
+      if (mainVideo) mainVideo.load();
+    }
+
+    loadProjectAssets();
+
+    const header = document.getElementById("header");
+    const nav = document.getElementById("nav");
+    const menuToggle = document.getElementById("menuToggle");
+
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".nav a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+      });
+    });
+
+    /* Video principal del hero */
+    const hero = document.getElementById("inicio");
+    const playPresentation = document.getElementById("playPresentation");
+    const videoOverlay = document.getElementById("videoOverlay");
+    const closeVideo = document.getElementById("closeVideo");
+    const presentationVideo = document.getElementById("presentationVideo");
+
+    async function openPresentationVideo() {
+      hero.classList.add("is-playing");
+      videoOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+      presentationVideo.currentTime = 0;
+      try {
+        await presentationVideo.play();
+      } catch (error) {
+        console.warn("El navegador no inició el video automáticamente:", error);
+      }
+    }
+
+    function closePresentationVideo() {
+      presentationVideo.pause();
+      presentationVideo.currentTime = 0;
+      videoOverlay.classList.remove("active");
+      hero.classList.remove("is-playing");
+      document.body.style.overflow = "";
+    }
+
+    playPresentation.addEventListener("click", openPresentationVideo);
+    closeVideo.addEventListener("click", closePresentationVideo);
+
+    videoOverlay.addEventListener("click", (event) => {
+      if (event.target === videoOverlay) closePresentationVideo();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && videoOverlay.classList.contains("active")) {
+        closePresentationVideo();
+      }
+    });
+
+
+    document.querySelectorAll("img[data-file]").forEach(img => {
+      img.addEventListener("error", () => {
+        console.error("No se pudo cargar:", img.dataset.file, "→", img.src);
+      });
+    });
+
+    presentationVideo.addEventListener("error", () => {
+      console.error(
+        "No se pudo cargar video_presentacion.mp4. Ruta usada:",
+        presentationVideo.currentSrc
+      );
+    });
+
+
+    document.querySelectorAll(".logo-card img").forEach(img => {
+      img.addEventListener("error", () => {
+        img.style.display = "none";
+        const fallback = document.createElement("span");
+        fallback.className = "logo-fallback";
+        fallback.textContent = img.alt || "Marca";
+        img.parentElement.appendChild(fallback);
+      });
+    });
+
+    /* Carrusel portafolio */
+    const portfolioTrack = document.getElementById("portfolioTrack");
+    document.getElementById("nextPortfolio").addEventListener("click", () => {
+      portfolioTrack.scrollBy({ left: 300, behavior: "smooth" });
+    });
+
+    document.getElementById("prevPortfolio").addEventListener("click", () => {
+      portfolioTrack.scrollBy({ left: -300, behavior: "smooth" });
+    });
+
+    /* Animaciones al hacer scroll */
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, {
+      threshold: 0.16
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    /* Menú activo por sección */
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav a");
+
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          navLinks.forEach(link => {
+            link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+          });
+        }
+      });
+    }, {
+      rootMargin: "-45% 0px -45% 0px"
+    });
+
+    sections.forEach(section => activeObserver.observe(section));
+  
+    /* Visor ampliado de imágenes del portafolio */
+    const portfolioModal = document.getElementById("portfolioModal");
+    const portfolioModalImage = document.getElementById("portfolioModalImage");
+    const portfolioModalClose = document.getElementById("portfolioModalClose");
+
+    document.querySelectorAll(".portfolio-card img").forEach(img => {
+      img.closest(".portfolio-card").addEventListener("click", () => {
+        portfolioModalImage.src = img.src;
+        portfolioModalImage.alt = img.alt;
+        portfolioModal.classList.add("active");
+        portfolioModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function closePortfolioModal() {
+      portfolioModal.classList.remove("active");
+      portfolioModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    portfolioModalClose.addEventListener("click", closePortfolioModal);
+    portfolioModal.addEventListener("click", (event) => {
+      if (event.target === portfolioModal) closePortfolioModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && portfolioModal.classList.contains("active")) {
+        closePortfolioModal();
+      }
+    });
+  
+    /* Galería completa del portafolio */
+    const openGallery = document.getElementById("openGallery");
+    const galleryOverlay = document.getElementById("galleryOverlay");
+    const closeGallery = document.getElementById("closeGallery");
+    const galleryLightbox = document.getElementById("galleryLightbox");
+    const closeLightbox = document.getElementById("closeLightbox");
+    const galleryLightboxImage = document.getElementById("galleryLightboxImage");
+
+    function openPortfolioGallery() {
+      galleryOverlay.classList.add("active");
+      galleryOverlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePortfolioGallery() {
+      galleryOverlay.classList.remove("active");
+      galleryOverlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function openGalleryLightbox(src, alt) {
+      galleryLightboxImage.src = src;
+      galleryLightboxImage.alt = alt || "Imagen ampliada del portafolio";
+      galleryLightbox.classList.add("active");
+      galleryLightbox.setAttribute("aria-hidden", "false");
+    }
+
+    function closeGalleryLightbox() {
+      galleryLightbox.classList.remove("active");
+      galleryLightbox.setAttribute("aria-hidden", "true");
+      galleryLightboxImage.src = "";
+    }
+
+    if (openGallery) openGallery.addEventListener("click", openPortfolioGallery);
+    if (closeGallery) closeGallery.addEventListener("click", closePortfolioGallery);
+    if (closeLightbox) closeLightbox.addEventListener("click", closeGalleryLightbox);
+
+    galleryOverlay.addEventListener("click", (event) => {
+      if (event.target === galleryOverlay) {
+        closePortfolioGallery();
+      }
+    });
+
+    galleryLightbox.addEventListener("click", (event) => {
+      if (event.target === galleryLightbox) {
+        closeGalleryLightbox();
+      }
+    });
+
+    document.querySelectorAll(".gallery-item").forEach(item => {
+      item.addEventListener("click", () => {
+        const img = item.querySelector("img");
+        openGalleryLightbox(img.src, img.alt);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        if (galleryLightbox.classList.contains("active")) {
+          closeGalleryLightbox();
+        } else if (galleryOverlay.classList.contains("active")) {
+          closePortfolioGallery();
+        }
+      }
+    });
+
+  </script>
+
+
+</body>
+</html>
