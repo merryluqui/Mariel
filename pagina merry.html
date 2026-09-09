@@ -1305,13 +1305,19 @@
 
       <div class="scroll-indicator"></div>
 
-      <div class="video-overlay" id="videoOverlay">
-        <button class="close-video" id="closeVideo">×</button>
-        <video id="presentationVideo" controls playsinline>
-          <source data-file="video_presentacion.mp4" src="" type="video/mp4">
-          Tu navegador no puede reproducir este video.
-        </video>
-      </div>
+ <div class="video-overlay" id="videoOverlay">
+    <button class="video-close" id="closeVideo" type="button">×</button>
+
+    <iframe
+        id="presentationVideo"
+        src="https://youtube.com/shorts/6AmMH7yKl4c?si=nkW4PO7KS1q-J3-G" 
+        title="Video de presentación"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+</div>
+        
+    
     </section>
 
     <!-- SOBRE MÍ -->
